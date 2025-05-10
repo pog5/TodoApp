@@ -3,6 +3,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Hello!</h1>
+    @if (User.Identity is not { IsAuthenticated: true })
+    {
+        <p>Please log in to access your list.</p>
+    }
+    else
+    {
+        <p>Welcome back, @User.Identity.Name!</p>
+    }
 </div>
