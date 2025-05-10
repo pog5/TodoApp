@@ -1,0 +1,65 @@
+@model IEnumerable<TodoApp.Models.TodoItem>
+
+@{
+    ViewData["Title"] = "My Todo List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Todo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Status
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="@(item.IsDone ? "table-success text-decoration-line-through" : "")">
+            <td>
+                <form asp-action="ToggleDone" asp-route-id="@item.Id" method="post" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <input type="checkbox" @(item.IsDone ? "checked" : "") onchange="this.form.submit()" 
+                           title="@(item.IsDone ? "Mark as not done" : "Mark as done")" />
+                </form>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @item.CreatedAt.ToLocalTime().ToString("g")
+            </td>
+            <td>
+                @(item.DueDate.HasValue ? item.DueDate.Value.ToLocalTime().ToString("d") : "N/A")
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                @* <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a> *@
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+    <style>
+        .table-success td {
+            color: #6c757d; /* So text is not too light on success background */
+        }
+    </style>
+}

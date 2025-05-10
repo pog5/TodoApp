@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp", "TodoApp\TodoApp.csproj", "{9CE97583-444E-4156-A8B4-9B220DA1F1DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{31038E17-04A5-4CC5-97D5-BB67046452B9}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAppMainTests", "TodoAppMainTests\TodoAppMainTests.csproj", "{770A4C59-1C28-402D-8198-C2B5DA8D1343}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CE97583-444E-4156-A8B4-9B220DA1F1DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE97583-444E-4156-A8B4-9B220DA1F1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE97583-444E-4156-A8B4-9B220DA1F1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE97583-444E-4156-A8B4-9B220DA1F1DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770A4C59-1C28-402D-8198-C2B5DA8D1343}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770A4C59-1C28-402D-8198-C2B5DA8D1343}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770A4C59-1C28-402D-8198-C2B5DA8D1343}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770A4C59-1C28-402D-8198-C2B5DA8D1343}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
