@@ -3,31 +3,26 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TodoApp.Areas.Identity.Data;
 
-namespace TodoApp.Models
+namespace TodoApp.Models;
+
+[DisplayName("TODO")]
+public class TodoItem
 {
-    [DisplayName("TODO")]
-    public class TodoItem
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        [Required]
-        [StringLength(200, MinimumLength = 1)]
-        public string Title { get; set; } = string.Empty;
+    [Required]
+    [StringLength(200, MinimumLength = 1)]
+    public string Title { get; set; } = string.Empty;
 
-        [DisplayName("Completed?")]
-        public bool IsDone { get; set; } = false;
+    [DisplayName("Completed?")] public bool IsDone { get; set; } = false;
 
-        [DisplayName("Added at:")]
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    [DisplayName("Added at:")] public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        [DisplayName("Due by:")]
-        public DateTime? DueDate { get; set; }
+    [DisplayName("Due by:")] public DateTime? DueDate { get; set; }
 
-        [Required]
-        [DisplayName("Creator's ID:")]
-        public string UserId { get; set; } = string.Empty;
+    [Required]
+    [DisplayName("Creator's ID:")]
+    public string UserId { get; set; } = string.Empty;
 
-        [ForeignKey("Creator")]
-        public virtual ApplicationUser? User { get; set; }
-    }
+    [ForeignKey("Creator")] public virtual ApplicationUser? User { get; set; }
 }
