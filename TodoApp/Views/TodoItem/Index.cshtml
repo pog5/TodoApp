@@ -30,43 +30,43 @@
     <tbody>
     @foreach (var item in Model)
     {
-    <tr class="@(
-               item.IsDone ? "table-success text-decoration-line-through" :
-               item.DueDate == null ? "" : /* No specific class if no due date and not done */
-               item.DueDate.Value.Date < DateTime.UtcNow.Date ? "table-danger" : /* Overdue (red) */
-               item.DueDate.Value.Date == DateTime.UtcNow.Date ? "table-warning" : /* Due today (yellow) */
-               ""
-               )">
-        <td>
-            <form asp-action="ToggleDone" asp-route-id="@item.Id" method="post" style="display:inline;">
-                @Html.AntiForgeryToken()
-                <input type="checkbox" @(item.IsDone ? "checked" : "") onchange="this.form.submit()"
-                       title="@(item.IsDone ? "Mark as not done" : "Mark as done")"/>
-            </form>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @item.CreatedAt.ToLocalTime().ToString("g")
-        </td>
-        <td>
-            @(item.DueDate.HasValue ? item.DueDate.Value.ToLocalTime().ToString("d") : "N/A")
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
-            @* <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a> *@
-            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
-        </td>
-    </tr>
-        }
+        <tr class="@(
+                   item.IsDone ? "table-success text-decoration-line-through" :
+                   item.DueDate == null ? "" : /* No specific class if no due date and not done */
+                   item.DueDate.Value.Date < DateTime.UtcNow.Date ? "table-danger" : /* Overdue (red) */
+                   item.DueDate.Value.Date == DateTime.UtcNow.Date ? "table-warning" : /* Due today (yellow) */
+                   ""
+                   )">
+            <td>
+                <form asp-action="ToggleDone" asp-route-id="@item.Id" method="post" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <input type="checkbox" @(item.IsDone ? "checked" : "") onchange="this.form.submit()"
+                           title="@(item.IsDone ? "Mark as not done" : "Mark as done")"/>
+                </form>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @item.CreatedAt.ToLocalTime().ToString("g")
+            </td>
+            <td>
+                @(item.DueDate.HasValue ? item.DueDate.Value.ToLocalTime().ToString("d") : "N/A")
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                @* <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a> *@
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
 
 @section Scripts {
-<style>
-.table-success td {
-color: #6c757d; /* So text is not too light on success background */
-}
-</style>
+    <style>
+        .table-success td {
+            color: #6c757d; /* So text is not too light on success background */
+        }
+    </style>
 }
